@@ -18,7 +18,7 @@ function findRule() {
 
 						if ( rule.selectorText && rule.selectorText.match("video::cue") ) {
 
-							video_rule = rule
+							video_cue = rule
 
 						}
 
@@ -58,13 +58,13 @@ function start() {
 
 							if ( track.track.activeCues[j].id == "alfa" ) {
 
-								rule.style.color = "green";
+								video_cue.style.color = "green";
 
 							}
 
 							else {
 
-								rule.style.color = "white";
+								video_cue.style.color = "white";
 
 							}
 						}
