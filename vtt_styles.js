@@ -50,7 +50,7 @@ function start() {
 				var listener = tracks[i].addEventListener('cuechange',  function(track, cue){
 					// console.log(track.track)
 					var  track = track;
-					var video_cue = cue;
+					var video_cue = findRule();
 
 					if ( track.track.activeCues ) {
 
