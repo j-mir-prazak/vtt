@@ -33,7 +33,7 @@ function findRule() {
 
 }
 
-function changeColor(track,cue) {
+function changeColor(track, cue) {
 
 	var  track = track;
 
@@ -74,10 +74,10 @@ function start() {
 		for (var i = 0; i < tracks.length; i++) {
 			if ( tracks[i].kind == "subtitles" ) {
 				// console.log(tracks[i])
-				var listener = tracks[i].addEventListener('cuechange',  changeColor(track, cue){
+				var listener = tracks[i].addEventListener('cuechange',  changeColor( track, cue ) {
 					// console.log(track.track)
 
-				}.bind( null, tracks[i], video_cue) )
+				}.bind( null, tracks[i], video_cue ) )
 
 				eventListeners.push(listener)
 			}
