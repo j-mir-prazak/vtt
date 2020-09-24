@@ -11,7 +11,7 @@ function findRule() {
 		for ( var j = 0; j < sheet.rules.length; j++ ) {
 					var rule = sheet.rules[j]
 					if ( rule.selectorText && rule.SelectorText.match("video::cue") ) {
-						console.log("rule")
+						console.log(rule)
 						video_rule = rule
 					}
 
