@@ -1,6 +1,7 @@
-var eventListeners = new Array();
 
 
+
+var tracksSet = new Array();
 var video_cue;
 var video_webkit;
 
@@ -39,18 +40,19 @@ function start() {
 	var video_cue = findRule();
 	var tracks = document.getElementsByTagName("track");
 		for (var i = 0; i < tracks.length; i++) {
-			if ( tracks[i].kind == "subtitles" ) {
+			if ( tracks[i].kind == "subtitles" && tracksSet.indexOf(tracks[i]) == -1 ) {
 				// console.log(tracks[i])
 				tracks[i].addEventListener('cuechange',  changeColor( tracks[i] ) )
+				tracksSet.push(tracks[i])
 
 			}
 		}
 }
 
 var waiter = setInterval(function() {
-	var track = document.getElementsByTagName("track");
-	if ( track.length > 0 ) {
+	var video = document.getElementsByTagName("video");
+	if ( video.length > 0 ) {
 		clearInterval(waiter)
-		track[0].addEventListener('cuechange', start() )
+		video[0].textTrack.addEventListener('change', start() )
 	 }
 }, 100)
