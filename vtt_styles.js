@@ -56,9 +56,9 @@ function start() {
 
 							console.log(track.track.activeCues[j].id)
 
-							if ( track.track.activeCues[j].id != "" ) {
+							if ( track.track.activeCues[j].id == "alfa" ) {
 
-								rule.style.color = track.track.activeCues[j].id;
+								rule.style.color = "green";
 
 							}
 
