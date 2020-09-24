@@ -56,7 +56,7 @@ function start() {
 
 							console.log(track.track.activeCues[j].id)
 
-							if ( track.track.activeCues[j].id == "alfa" ) {
+							if ( track.track.activeCues[j].id != "" ) {
 
 								video_cue.style.color = "green";
 
