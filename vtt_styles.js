@@ -48,6 +48,7 @@ function start() {
 				tracksSet.push(tracks[i])
 
 			}
+			if ( tracksSet.indexOf(tracks[i]) != -1 ) console.log("set already")
 		}
 }
 
