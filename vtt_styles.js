@@ -4,9 +4,9 @@ var eventListeners = new Array();
 var video_rule;
 function findRule() {
 
-	for ( var i = 0; i < document.style.Sheets.legnth; i++ ) {
+	for ( var i = 0; i < document.styleSheets.legnth; i++ ) {
 
-		var sheet = document.style.Sheets[i]
+		var sheet = document.styleSheets[i]
 
 		for ( var j = 0; j < sheet.rules.length; j++ ) {
 					var rule = sheet.rules[j]
