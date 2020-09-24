@@ -25,15 +25,40 @@ function changeColor(track, cue) {
 	if ( track.track.activeCues ) {
 		for (var j = 0; j < track.track.activeCues.length; j++) {
 			console.log(track.track.activeCues[j].id)
-			if ( track.track.activeCues[j].id != "" ) {
-				video_cue.style.color = "green";
+			if ( track.track.activeCues[j].id != "1" ) {
+				applyStyle(video_cue, "1")
 			}
 			else {
-				video_cue.style.color = "white";
+				applyStyle(video_cue, "2")
 			}
 		}
 	}
 }
+
+function applyStyle(cue, style) {
+	var video_cue = cue
+	var style = style
+
+	if (style == "1") {
+		video_cue.style.color = "white";
+		video_cue.style.background = "navi";
+		video_cue.style.textShadow = "black 15px 15px";
+		video_cue.style.line = 2;
+	}
+	
+	if (style == "2") {
+		video_cue.style.color = "green";
+		video_cue.style.background = "pink";
+		video_cue.style.textShadow = "black -5px -5px";
+		video_cue.style.line = 14;
+	}
+
+
+}
+
+
+
+
 
 
 function start() {
@@ -57,7 +82,7 @@ var waiter = setInterval(function() {
 	if ( video.length > 0 ) {
 		clearInterval(waiter)
 
-		video[0].textTrack.addEventListener('change', function() {
+		video[0].textTracks.addEventListener('change', function() {
 			start()
 		})
 
