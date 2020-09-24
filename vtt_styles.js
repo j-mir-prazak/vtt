@@ -50,7 +50,7 @@ function start() {
 var waiter = setInterval(function() {
 	var track = document.getElementsByTagName("track");
 	if ( track.length > 0 ) {
-		clearInteval(waiter)
+		clearInterval(waiter)
 		start()
 	 }
 }, 200)
