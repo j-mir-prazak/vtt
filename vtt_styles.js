@@ -74,7 +74,7 @@ function start() {
 		for (var i = 0; i < tracks.length; i++) {
 			if ( tracks[i].kind == "subtitles" ) {
 				// console.log(tracks[i])
-				var listener = tracks[i].addEventListener('cuechange',  changeColor( track, cue ).bind( null, tracks[i], video_cue ) )
+				var listener = tracks[i].addEventListener('cuechange',  changeColor( tracks[i] ) )
 
 				eventListeners.push(listener)
 			}
