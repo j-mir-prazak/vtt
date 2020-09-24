@@ -1,44 +1,47 @@
 var eventListeners = new Array();
 
-var video = document.getElementsByTagName("video");
-console.log(video)
+function start() {
 
-var tracks = document.getElementsByTagName("track");
+	var video = document.getElementsByTagName("video");
 
-for (var i = 0; i < tracks.length; i++) {
-	if ( tracks[i].kind == "subtitles" ) {
-		// console.log(tracks[i])
-		var listener = tracks[i].addEventListener('cuechange',  function(track){
-			// console.log(track.track)
-			var  track = track;
+	console.log(video)
 
-			if ( track.track.activeCues ) {
+	var tracks = document.getElementsByTagName("track");
 
-				for (var j = 0; j < track.track.activeCues.length; j++) {
+		for (var i = 0; i < tracks.length; i++) {
+			if ( tracks[i].kind == "subtitles" ) {
+				// console.log(tracks[i])
+				var listener = tracks[i].addEventListener('cuechange',  function(track){
+					// console.log(track.track)
+					var  track = track;
 
-					console.log(track.track.activeCues[j].id)
+					if ( track.track.activeCues ) {
 
-					if ( track.track.activeCues[j].id != "" ) {
+						for (var j = 0; j < track.track.activeCues.length; j++) {
 
-						document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = track.track.activeCues[j].id;
+							console.log(track.track.activeCues[j].id)
 
+							if ( track.track.activeCues[j].id != "" ) {
+
+								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = track.track.activeCues[j].id;
+
+							}
+
+							else {
+
+								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = "white";
+
+							}
+						}
 					}
 
-					else {
 
-						document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = "white";
+				}.bind( null, tracks[i]) )
 
-					}
-				}
+				eventListeners.push(listener)
 			}
 
-
-		}.bind( null, tracks[i]) )
-
-		eventListeners.push(listener)
-	}
-
-}
+		}
 }
 
 setTimeout(start, 3000)
