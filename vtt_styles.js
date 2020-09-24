@@ -1,6 +1,32 @@
 var eventListeners = new Array();
 
+
+var video_rule;
+function findRule() {
+
+	for ( var i = 0; i < document.style.Sheets.legnth; i++ ) {
+
+		var sheet = document.style.Sheets[i]
+
+		for ( var j = 0; j < sheet.rules.length; j++ ) {
+					var rule = sheet.rules[j]
+					if ( rule.selectorText && rule.SelectorText.match("video::cue") ) {
+						console.log("rule")
+						video_rule = rule
+					}
+
+		}
+
+	}
+
+
+
+}
+
+
 function start() {
+
+	findRule();
 
 	var video = document.getElementsByTagName("video");
 
@@ -23,13 +49,13 @@ function start() {
 
 							if ( track.track.activeCues[j].id != "" ) {
 
-								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = track.track.activeCues[j].id;
+								rule.style.color = track.track.activeCues[j].id;
 
 							}
 
 							else {
 
-								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = "white";
+								rule.style.color = "white";
 
 							}
 						}
