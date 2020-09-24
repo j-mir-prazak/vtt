@@ -48,9 +48,9 @@ function start() {
 }
 
 var waiter = setInterval(function() {
-	var track = document.getElementsByTagName("track");
-	if ( track.length > 0 ) {
+	var video = document.getElementsByTagName("video");
+	if ( video.played > 0 ) {
 		clearInterval(waiter)
-		start()
+		video.start()
 	 }
-}, 200)
+}, 100)
