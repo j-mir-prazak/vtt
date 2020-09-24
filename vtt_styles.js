@@ -6,7 +6,7 @@ var video_webkit;
 
 function findRule() {
 
-	for ( var i = 0; i < document.styleSheets.legnth; i++ ) {
+	for ( var i = 0; i < document.styleSheets.length; i++ ) {
 
 		var sheet = document.styleSheets[i]
 
@@ -50,7 +50,6 @@ function start() {
 				var listener = tracks[i].addEventListener('cuechange',  function(track, cue){
 					// console.log(track.track)
 					var  track = track;
-					var video_cue = findRule();
 
 					if ( track.track.activeCues ) {
 
