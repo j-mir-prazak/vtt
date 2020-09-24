@@ -42,7 +42,9 @@ function start() {
 		for (var i = 0; i < tracks.length; i++) {
 			if ( tracks[i].kind == "subtitles" && tracksSet.indexOf(tracks[i]) == -1 ) {
 				// console.log(tracks[i])
-				tracks[i].addEventListener('cuechange',  changeColor( tracks[i] ) )
+				tracks[i].addEventListener('cuechange',  function(track) {
+					changeColor( track )
+				}.bind(null, tracks[i]))
 				tracksSet.push(tracks[i])
 
 			}
@@ -53,6 +55,10 @@ var waiter = setInterval(function() {
 	var video = document.getElementsByTagName("video");
 	if ( video.length > 0 ) {
 		clearInterval(waiter)
-		video[0].textTrack.addEventListener('change', start() )
+
+		video[0].textTrack.addEventListener('change', function() {
+			start()
+		})
+
 	 }
 }, 100)
