@@ -1,20 +1,29 @@
 var eventListeners = new Array();
 
 
-var video_rule;
+var video_cue;
+var video_webkit;
+
 function findRule() {
 
 	for ( var i = 0; i < document.styleSheets.legnth; i++ ) {
 
 		var sheet = document.styleSheets[i]
 
-		for ( var j = 0; j < sheet.rules.length; j++ ) {
-					var rule = sheet.rules[j]
-					if ( rule.selectorText && rule.SelectorText.match("video::cue") ) {
-						console.log(rule)
-						video_rule = rule
-					}
+		if ( sheet.href == null || sheet.href.match(/afo/) ) {
 
+			for ( var j = 0; j < sheet.rules.length; j++ ) {
+
+						var rule = sheet.rules[j]
+
+						if ( rule.selectorText && rule.selectorText.match("video::cue") ) {
+
+							video_rule = rule
+
+						}
+
+
+			}
 		}
 
 	}
