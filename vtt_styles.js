@@ -41,16 +41,16 @@ function start() {
 		for (var i = 0; i < tracks.length; i++) {
 			if ( tracks[i].kind == "subtitles" ) {
 				// console.log(tracks[i])
-				var listener = tracks[i].addEventListener('cuechange',  changeColor( tracks[i] ) )
-				eventListeners.push(listener)
+				tracks[i].addEventListener('cuechange',  changeColor( tracks[i] ) )
+
 			}
 		}
 }
 
 var waiter = setInterval(function() {
-	var video = document.getElementsByTagName("video");
-	if ( video.played > 0 ) {
+	var track = document.getElementsByTagName("track");
+	if ( track.length > 0 ) {
 		clearInterval(waiter)
-		video.start()
+		track[0].addEventListener('cuechange', start() )
 	 }
 }, 100)
