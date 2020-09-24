@@ -27,7 +27,7 @@ function findRule() {
 		}
 
 	}
-
+ return video_cue;
 
 
 }
@@ -35,7 +35,7 @@ function findRule() {
 
 function start() {
 
-	findRule();
+	var video_cue = findRule();
 
 	var video = document.getElementsByTagName("video");
 
