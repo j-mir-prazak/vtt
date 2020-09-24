@@ -27,6 +27,7 @@ function findRule() {
 		}
 
 	}
+
  return video_cue;
 
 
@@ -46,9 +47,10 @@ function start() {
 		for (var i = 0; i < tracks.length; i++) {
 			if ( tracks[i].kind == "subtitles" ) {
 				// console.log(tracks[i])
-				var listener = tracks[i].addEventListener('cuechange',  function(track){
+				var listener = tracks[i].addEventListener('cuechange',  function(track, cue){
 					// console.log(track.track)
 					var  track = track;
+					var video_cue = cue;
 
 					if ( track.track.activeCues ) {
 
@@ -71,7 +73,7 @@ function start() {
 					}
 
 
-				}.bind( null, tracks[i]) )
+				}.bind( null, tracks[i], video_cue) )
 
 				eventListeners.push(listener)
 			}
