@@ -26,31 +26,36 @@ function changeColor(track, cue) {
 		for (var j = 0; j < track.track.activeCues.length; j++) {
 			console.log(track.track.activeCues[j].id)
 			if ( track.track.activeCues[j].id != "1" ) {
-				applyStyle(video_cue, "1")
+				applyStyle(video_cue, "1", track.track.activeCues[j])
 			}
 			else {
-				applyStyle(video_cue, "2")
+				applyStyle(video_cue, track.track.activeCues[j])
 			}
 		}
 	}
 }
 
-function applyStyle(cue, style) {
+function applyStyle(cue, style, track) {
 	var video_cue = cue
 	var style = style
+	var track = track
 
 	if (style == "1") {
 		video_cue.style.color = "white";
 		video_cue.style.background = "navi";
 		video_cue.style.textShadow = "black 15px 15px";
-		video_cue.style.line = 2;
+		track.line=60
+		track.position=20
+
 	}
-	
+
 	if (style == "2") {
 		video_cue.style.color = "green";
 		video_cue.style.background = "pink";
 		video_cue.style.textShadow = "black -5px -5px";
-		video_cue.style.line = 14;
+		track.line=1
+		track.position=30
+
 	}
 
 
