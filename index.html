@@ -1,0 +1,120 @@
+<!DOCTYPE>
+<html>
+   <meta charset="UTF-8">
+<head>
+	<style>
+	body {
+		background-color: powderblue;
+		margin:auto;
+		width:600px
+	}
+
+	video {
+		width:100%
+	}
+
+	/* video::cue {
+	    font-size: 1rem;
+		color:red;
+		background:none;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	} */
+	video::cue {
+
+		background:none;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+	}
+
+
+
+
+	</style>
+
+	<script>
+
+
+function start() {
+
+		var eventListeners = new Array();
+
+		var video = document.getElementsByTagName("video");
+		console.log(video)
+
+		var tracks = document.getElementsByTagName("track");
+
+		for (var i = 0; i < tracks.length; i++) {
+			if ( tracks[i].kind == "subtitles" ) {
+				// console.log(tracks[i])
+				var listener = tracks[i].addEventListener('cuechange',  function(track){
+					// console.log(track.track)
+					var  track = track;
+
+					if ( track.track.activeCues ) {
+
+						for (var j = 0; j < track.track.activeCues.length; j++) {
+
+							console.log(track.track.activeCues[j].id)
+
+							if ( track.track.activeCues[j].id != "" ) {
+
+								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = track.track.activeCues[j].id;
+
+							}
+
+							else {
+
+								document.styleSheets[0].rules[document.styleSheets[0].rules.length-1].valueOf("video::cue").style.color = "white";
+
+							}
+						}
+					}
+
+
+				}.bind( null, tracks[i]) )
+
+				eventListeners.push(listener)
+			}
+
+		}
+	}
+
+	setTimeout(start, 3000)
+
+
+		// document.getElementById("subtitles").track.oncuechange = function() {
+		//   console.log("next sub")
+		// 	if (document.getElementById("subtitles").track.activeCues.length > 0) {
+		// 		for ( var i = 0; i < document.getElementById("subtitles").track.activeCues.length; i++ ) {
+		// 			 if ( document.getElementById("subtitles").track.activeCues[i].id == "blue") {
+		// 					document.styleSheets[0].rules.valueOf("video::cue") = "blue"
+		// 					}
+		// 			else {
+		// 				document.styleSheets[0].rules.valueOf("video::cue") = "yellow"
+		// 				}
+		// 			}
+		//
+		// 		}
+		// }
+
+	</script>
+
+
+</head>
+
+<body>
+
+	<video controls src="Call Of The Forest.mp4" id="video">
+	    <track id="subtitles" default
+	           kind="subtitles"
+	           srclang="en"
+	           src="friday.vtt" />
+	    Sorry, your browser doesn't support embedded videos.
+	</video>
+
+
+
+</body>
+
+
+</html>
